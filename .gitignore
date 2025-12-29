@@ -3,5 +3,5 @@ __pycache__/
 temp/
 .env
 *.pyc
-congig.py
+config.py
 кака.txt
