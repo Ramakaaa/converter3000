@@ -1,5 +1,7 @@
 import subprocess
 from PIL import Image
+import yt_dlp
+import os
 
 SOFFICE_PATH = r"C:\Program Files\LibreOffice\program\soffice.exe"
 # если 32-bit:
@@ -36,3 +38,14 @@ def docx_to_pdf(docx_path, output_dir):
         ],
         check=True
     )
+
+# ---------- СКАЧИВАНИЕ ПО ССЫЛКЕ ----------
+def download_by_url(url: str, output_path: str):
+    ydl_opts = {
+        "outtmpl": output_path,
+        "format": "mp4",
+        "quiet": True,
+        "noplaylist": True
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
